@@ -1,0 +1,19 @@
+# general
+alias reload="source ~/.zshrc"
+alias key="cat ~/.ssh/id_rsa.pub"
+alias hosts="sudo vim /etc/hosts"
+
+# phpunit
+alias pu="./vendor/bin/phpunit"
+alias puf="./vendor/bin/phpunit --filter"
+
+# composer
+alias c="composer"
+alias ci="composer install"
+alias cu="composer update"
+alias cda="composer dumpautoload"
+
+# go
+alias g="go"
+alias gb="go build"
+alias gv="go vet"
