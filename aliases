@@ -3,6 +3,13 @@ alias reload="source ~/.zshrc"
 alias key="cat ~/.ssh/id_rsa.pub"
 alias hosts="sudo vim /etc/hosts"
 
+# docker
+alias dc="docker-compose"
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias dcs="docker-compose stop"
+alias dps="docker ps"
+
 # phpunit
 alias pu="./vendor/bin/phpunit"
 alias puf="./vendor/bin/phpunit --filter"
