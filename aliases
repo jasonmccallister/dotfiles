@@ -4,6 +4,7 @@ alias key="cat ~/.ssh/id_rsa.pub"
 alias hosts="sudo vim /etc/hosts"
 alias cdd="cd ~/dev"
 alias ealias="code ~/.dotfiles/aliases"
+alias e="code ."
 
 # docker
 alias dc="docker-compose"
