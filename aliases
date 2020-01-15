@@ -1,21 +1,32 @@
 # general
 alias reload="source ~/.zshrc"
-alias key="cat ~/.ssh/id_rsa.pub"
+alias key="cat ~/.ssh/id_rsa.pub | pbcopy"
 alias hosts="sudo vim /etc/hosts"
 alias cdd="cd ~/dev"
-alias ealias="code ~/.dotfiles/aliases"
+alias ealias="vim ~/.dotfiles/aliases"
 alias e="code ."
+alias wtf='git reset --hard HEAD'
+
+# symfony
+alias console="php ./bin/console"
+alias dconsole="docker-compose exec php php ./bin/console"
 
 # docker
 alias dc="docker-compose"
 alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
 alias dce="docker-compose exec"
+alias dclf="docker-compose logs -f"
 alias dcd="docker-compose down"
+alias dcdv="docker-compose down -v"
 alias dcs="docker-compose stop"
 alias dcps="docker-compose ps"
 alias dps="docker ps"
+alias dplay="docker run --rm -it"
+alias scratch="docker run --rm -it -e 'TERM=xterm-256color' jasonmccallister/scratchpad bash" 
 
 # phpunit
+alias codecept="./vendor/bin/codecept"
 alias pu="./vendor/bin/phpunit"
 alias puf="./vendor/bin/phpunit --filter"
 
@@ -27,5 +38,6 @@ alias cda="composer dumpautoload"
 
 # go
 alias g="go"
+alias cdg="cd ~/go/src/github.com/pixelandtonic"
 alias gb="go build"
 alias gv="go vet"
