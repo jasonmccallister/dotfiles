@@ -91,3 +91,6 @@
     rebase = false
 [init]
     defaultBranch = main
+[user]
+	name = Jason McCallister
+	email = jason@mccallister.dev
