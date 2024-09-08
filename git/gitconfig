@@ -59,7 +59,7 @@
 [color]
     ui = auto
 [commit]
-    gpgsign = false
+	gpgsign = true
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
@@ -91,6 +91,7 @@
     rebase = false
 [init]
     defaultBranch = main
-[user]
-	name = Jason McCallister
-	email = jason@mccallister.dev
+[include]
+    path = ~/.config/git/user-config
+[gpg]
+	program = gpg
