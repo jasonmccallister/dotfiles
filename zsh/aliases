@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+alias ls="ls -l"
+alias gst="git status"
+alias reload="source ~/.zshrc"
+
+alias awsp=use_aws_profile
+alias d="dagger"

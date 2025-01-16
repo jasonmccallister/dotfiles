@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Zsh
+# if the user has a .zshrc file, back it up and symlink the one in the dotfiles - but only if it's not already a symlink
+if [ -f $HOME/.zshrc ] && [ ! -L $HOME/.zshrc ]; then
+    mv $HOME/.zshrc $HOME/.zshrc.bak
+fi
+
+ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
+
+
+# Git
+ln -sf $DOTFILES/git/gitignore_global $HOME/.gitignore_global

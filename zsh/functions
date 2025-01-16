@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+use_aws_profile() {
+    local profile="${1:-default}"
+
+    # Get credentials using specified profile
+    CREDENTIALS=$(aws configure export-credentials --profile $profile)
+
+    # Check if the command was successful
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to export AWS credentials for profile: $profile"
+        return 1
+    fi
+
+    # Extract and export credentials
+    export AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.AccessKeyId')
+    export AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.SecretAccessKey')
+    export AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.SessionToken')
+
+    # Verify we got the credentials
+    if [[ -n "$AWS_ACCESS_KEY_ID" && -n "$AWS_SECRET_ACCESS_KEY" ]]; then
+        echo "Successfully set AWS environment variables for profile: $profile"
+        echo "   Access Key ID: ${AWS_ACCESS_KEY_ID:0:5}..."
+        echo "   Secret Access Key: ${AWS_SECRET_ACCESS_KEY:0:5}..."
+        [[ -n "$AWS_SESSION_TOKEN" ]] && echo "   Session Token: ${AWS_SESSION_TOKEN:0:5}..."
+        return 0
+    else
+        echo "Error: Failed to set AWS credentials for profile: $profile"
+        return 1
+    fi
+}
