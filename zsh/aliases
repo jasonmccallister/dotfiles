@@ -7,3 +7,6 @@ alias tf="terraform"
 
 alias awsp=use_aws_profile
 alias d="dagger"
+
+alias eprofile="$EDITOR ~/.zshrc"
+alias edotfiles="$EDITOR ~/.dotfiles"
