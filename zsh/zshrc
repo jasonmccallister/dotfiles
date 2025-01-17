@@ -6,10 +6,6 @@ plugins=(git ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-source "$HOME/.dotfiles/zsh/aliases"
-source "$HOME/.dotfiles/zsh/functions"
-
 PROMPT="%F{cyan}%n@%m%f:%F{blue}%1~%f %(?.%F{green}.%F{red})$%f "
 
 . "$HOME/.local/bin/env"
@@ -19,6 +15,10 @@ PATH="$PATH:$HOME/.local/bin"
 
 # set my editor to zed
 export EDITOR='zed'
+
+# User configuration
+source "$HOME/.dotfiles/zsh/aliases"
+source "$HOME/.dotfiles/zsh/functions"
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
