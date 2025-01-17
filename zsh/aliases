@@ -3,6 +3,7 @@
 alias ls="ls -l"
 alias gst="git status"
 alias reload="source ~/.zshrc"
+alias tf="terraform"
 
 alias awsp=use_aws_profile
 alias d="dagger"

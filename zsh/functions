@@ -8,8 +8,10 @@ use_aws_profile() {
 
     # Check if the command was successful
     if [ $? -ne 0 ]; then
-        echo "Error: Failed to export AWS credentials for profile: $profile"
-        return 1
+        echo "Error: Failed to export AWS credentials for profile: $profile, trying sso login"
+        aws sso login --profile $profile
+        echo  "Sleeping for 5 seconds to allow the sso login to complete"
+        sleep 5
     fi
 
     # Extract and export credentials
