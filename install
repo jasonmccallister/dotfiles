@@ -13,3 +13,13 @@ ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 # Git
 ln -sf $DOTFILES/git/gitignore_global $HOME/.gitignore_global
+ln -sf $DOTFILES/git/template $HOME/.git-template
+git config --global commit.template $HOME/.git-template
+
+# Zed snippets
+# symlink to snippets directory or create it if it doesn't exist
+if [ ! -d $HOME/.config/zed/snippets ]; then
+    mkdir -p $HOME/.config/zed/snippets
+fi
+
+ln -sf $DOTFILES/zed/snippets/* $HOME/.config/zed/snippets/

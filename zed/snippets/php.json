@@ -1,0 +1,109 @@
+{
+  "PHP Class": {
+    "prefix": "class",
+    "body": ["class ${1:ClassName} {", "\t${2}", "}"],
+    "description": "Create a PHP class"
+  },
+
+  "PHP Interface": {
+    "prefix": "interface",
+    "body": ["interface ${1:InterfaceName} {", "\t${2}", "}"],
+    "description": "Create a PHP interface"
+  },
+
+  "PHP Function": {
+    "prefix": "fun",
+    "body": ["function ${1:functionName}(${2:$params}) {", "\t${3}", "}"],
+    "description": "Create a PHP function"
+  },
+
+  "PHP Public Method": {
+    "prefix": "pub",
+    "body": ["public function ${1:methodName}(${2:$params}) {", "\t${3}", "}"],
+    "description": "Create a public method"
+  },
+
+  "PHP Private Method": {
+    "prefix": "pri",
+    "body": ["private function ${1:methodName}(${2:$params}) {", "\t${3}", "}"],
+    "description": "Create a private method"
+  },
+
+  "PHP Protected Method": {
+    "prefix": "pro",
+    "body": ["protected function ${1:methodName}(${2:$params}) {", "\t${3}", "}"],
+    "description": "Create a protected method"
+  },
+
+  "PHP Constructor": {
+    "prefix": "construct",
+    "body": ["public function __construct(${1:$params}) {", "\t${2}", "}"],
+    "description": "Create a constructor method"
+  },
+
+  "PHP foreach Loop": {
+    "prefix": "foreach",
+    "body": ["foreach (${1:$array} as ${2:$value}) {", "\t${3}", "}"],
+    "description": "Create a foreach loop"
+  },
+
+  "PHP if Statement": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t${2}", "}"],
+    "description": "Create an if statement"
+  },
+
+  "PHP try-catch": {
+    "prefix": "try",
+    "body": ["try {", "\t${1}", "} catch (${2:Exception} \\$e) {", "\t${3}", "}"],
+    "description": "Create a try-catch block"
+  },
+
+  "PHP array": {
+    "prefix": "arr",
+    "body": ["\\$${1:arrayName} = [", "\t${2}", "];"],
+    "description": "Create an array"
+  },
+
+  "PHP var_dump": {
+    "prefix": "vd",
+    "body": ["var_dump(${1:$variable});"],
+    "description": "var_dump debugging"
+  },
+
+  "PHP print_r": {
+    "prefix": "pr",
+    "body": ["print_r(${1:$variable});"],
+    "description": "print_r debugging"
+  },
+
+  "PHP DocBlock": {
+    "prefix": "doc",
+    "body": ["/**", " * ${1:Description}", " *", " * @param ${2:type} ${3:$paramName}", " * @return ${4:type}", " */"],
+    "description": "Create a DocBlock comment"
+  },
+
+  "PHP Namespace": {
+    "prefix": "ns",
+    "body": ["namespace ${1:Namespace};"],
+    "description": "Create a namespace declaration"
+  },
+
+  "PHP Use Statement": {
+    "prefix": "use",
+    "body": ["use ${1:Namespace\\Class};"],
+    "description": "Create a use statement"
+  },
+
+  "PHP Echo": {
+    "prefix": "echo",
+    "body": ["echo ${1:$variable};"],
+    "description": "Echo statement"
+  },
+
+  "PHP Define Constant": {
+    "prefix": "define",
+    "body": ["define('${1:CONSTANT_NAME}', ${2:value});"],
+    "description": "Define a constant"
+  }
+}
