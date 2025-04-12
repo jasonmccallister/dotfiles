@@ -13,7 +13,25 @@ ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 # Git
 ln -sf $DOTFILES/git/gitignore_global $HOME/.gitignore_global
-ln -sf $DOTFILES/git/template $HOME/.git-template
+
+# copy the template to the home directory - if it exists, it will be overwritten
+if [ -f $HOME/.git-template ]; then
+    rm $HOME/.git-template
+fi
+
+# make the secrets directory if it doesn't exist
+if [ ! -d $HOME/.dotfiles/secrets ]; then
+    mkdir -p $HOME/.dotfiles/secrets
+fi
+
+# if the env files does not exist, create it in the secrets directory
+if [ ! -f $HOME/.dotfiles/secrets/env ]; then
+    touch $HOME/.dotfiles/secrets/env
+fi
+
+cp $DOTFILES/git/git-template $HOME/.git-template
+
+echo "Created a global git commit template at $HOME/.git-template"
 git config --global commit.template $HOME/.git-template
 
 # Zed snippets
