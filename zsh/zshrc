@@ -20,6 +20,8 @@ source "$HOME/.dotfiles/zsh/aliases"
 source "$HOME/.dotfiles/zsh/functions"
 source "$HOME/.dotfiles/secrets/env"
 
+export GOPATH="$HOME/go"
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
