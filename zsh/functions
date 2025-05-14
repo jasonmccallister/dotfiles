@@ -31,3 +31,24 @@ use_aws_profile() {
         return 1
     fi
 }
+
+dagger-dev() {
+    export _EXPERIMENTAL_DAGGER_RUNNER_HOST="docker-container://dagger-engine.dev"
+
+    local dagger_bin="/Users/jason/go/src/github.com/jasonmccallister/dagger/bin/dagger"
+
+    if [[ ! -f "$dagger_bin" ]]; then
+        echo "❌ Dagger binary not found at $dagger_bin"
+        return 1
+    fi
+
+    if [[ ! -x "$dagger_bin" ]]; then
+        echo "⚙️  Making Dagger binary executable"
+        chmod +x "$dagger_bin" || {
+            echo "❌ Failed to set executable permissions on $dagger_bin"
+            return 1
+        }
+    fi
+
+    "$dagger_bin" "$@"
+}
