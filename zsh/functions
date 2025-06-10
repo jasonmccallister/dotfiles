@@ -32,6 +32,30 @@ use_aws_profile() {
     fi
 }
 
+dag() {
+    # call build and the the dev dagger functions
+    dagger-build && dagger-dev "$@"
+}
+
+dagger-build() {
+    local repo="/Users/jason/go/src/github.com/jasonmccallister/dagger"
+
+    # call ./hack/dev in the repo directory
+    if [[ ! -d "$repo" ]]; then
+        echo "❌ Dagger repository not found at $repo"
+        return 1
+    fi
+
+    echo "🔧 Building Dagger in $repo"
+    (
+        cd "$repo" || return 1
+        ./hack/dev "$@"
+    ) || {
+        echo "❌ Failed to build Dagger"
+        return 1
+    }
+}
+
 dagger-dev() {
     export _EXPERIMENTAL_DAGGER_RUNNER_HOST="docker-container://dagger-engine.dev"
 
