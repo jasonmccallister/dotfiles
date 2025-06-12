@@ -90,7 +90,7 @@ cu-dev() {
     echo "🔧 Building container-use in $repo"
     (
         cd "$repo" || return 1
-        dagger call build export --path ./cu
+        dagger call build --platform current export --path ./cu
     ) || {
         echo "❌ Failed to build container-use"
         return 1
@@ -121,7 +121,7 @@ cu-dev() {
 
     echo "Moving cu binary to $cu_bin"
 
-    mv ./cu "$cu_bin" || {
+    mv "$repo/cu" "$cu_bin" || {
         echo "❌ Failed to move cu binary to $cu_bin"
         return 1
     }
