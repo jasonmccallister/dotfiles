@@ -10,7 +10,8 @@ PROMPT="%F{cyan}%n@%m%f:%F{blue}%1~%f %(?.%F{green}.%F{red})$%f "
 
 . "$HOME/.local/bin/env"
 
-PATH="$PATH:$HOME/.local/bin"
+PATH="$HOME/.local/bin:$PATH"
+
 
 # set my editor to zed
 export EDITOR='zed'
