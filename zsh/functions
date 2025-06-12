@@ -76,3 +76,61 @@ dagger-dev() {
 
     "$dagger_bin" "$@"
 }
+
+
+cu-dev() {
+    local repo="/Users/jason/go/src/github.com/jasonmccallister/container-use"
+
+    # call dagger call build export --path ./cu
+    if [[ ! -d "$repo" ]]; then
+        echo "❌ container-user repository not found at $repo"
+        return 1
+    fi
+
+    echo "🔧 Building container-use in $repo"
+    (
+        cd "$repo" || return 1
+        dagger call build export --path ./cu
+    ) || {
+        echo "❌ Failed to build container-use"
+        return 1
+    }
+
+    echo "✅ Successfully built container-use"
+
+    # move the binary to my local bin directory
+    local bin_dir="$HOME/.local/bin"
+
+    if [[ ! -d "$bin_dir" ]]; then
+        echo "Creating bin directory at $bin_dir"
+        mkdir -p "$bin_dir" || {
+            echo "❌ Failed to create bin directory at $bin_dir"
+            return 1
+        }
+    fi
+
+    local cu_bin="$bin_dir/cu"
+
+    if [[ -f "$cu_bin" ]]; then
+        echo "Removing existing cu binary at $cu_bin"
+        rm -f "$cu_bin" || {
+            echo "❌ Failed to remove existing cu binary at $cu_bin"
+            return 1
+        }
+    fi
+
+    echo "Moving cu binary to $cu_bin"
+
+    mv ./cu "$cu_bin" || {
+        echo "❌ Failed to move cu binary to $cu_bin"
+        return 1
+    }
+
+    echo "✅ Successfully moved cu binary to $cu_bin"
+
+    # hash the binary
+    hash -r || {
+        echo "❌ Failed to hash the cu binary"
+        return 1
+    }
+}
