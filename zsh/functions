@@ -77,30 +77,25 @@ dagger-dev() {
     "$dagger_bin" "$@"
 }
 
-
 cu-dev() {
     local repo="/Users/jason/go/src/github.com/jasonmccallister/container-use"
 
-    if [[ "$1" == "update" ]]; then
-        echo "🔄 Updating container-use repository"
-        if [[ -d "$repo" ]]; then
-            (
-                cd "$repo" || return 1
-                git pull upstream main || {
-                    echo "❌ Failed to update container-use repository"
-                    exit 1
-                }
-            )
-        else
-            echo "❌ container-use repository not found at $repo"
-            exit 1
-        fi
+    # make sure the repo exists
+    if [[ ! -d "$repo" ]]; then
+        echo "❌ container-use repository not found at $repo"
+        return 1
     fi
 
-    # call dagger call build export --path ./cu
-    if [[ ! -d "$repo" ]]; then
-        echo "❌ container-user repository not found at $repo"
-        return 1
+    # if the first argument is "update", pull the latest changes
+    if [[ "$1" == "update" ]]; then
+        echo "🔄 Updating container-use repository"
+        (
+            cd "$repo" || return 1
+            if ! git pull upstream main; then
+                echo "❌ Failed to update container-use repository"
+                return 1
+            fi
+        )
     fi
 
     echo "🔧 Building container-use in $repo"
